@@ -1,15 +1,15 @@
 # Ignore everything by default
 /*
 
-# Keep these folders and their contents
-!/alacritty/**
-!/fish/**
-!/hypr/**
-!/i3/**
-!/i3blocks/**
-!/kitty/**
-!/neofetch/**
-!/waybar/**
+# Keep these folders (without recursion first)
+!/alacritty/
+!/fish/
+!/hypr/
+!/i3/
+!/i3blocks/
+!/kitty/
+!/neofetch/
+!/waybar/
 
 # Keep this single file
 !/starship.toml

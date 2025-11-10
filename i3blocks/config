@@ -1,0 +1,90 @@
+separator=true
+separator_symbol="|"
+separator_block_width=12
+markup=none
+interval=5
+
+
+[mic]
+command=~/.config/i3blocks/scripts/mic.sh
+interval=2
+color=#FFB86C
+
+
+### BRIGHTNESS CONTROL ###
+
+[brightness_down]
+command=~/.config/i3blocks/scripts/brightness.sh down
+interval=once
+color=#FFFF66
+
+[brightness_level]
+command=echo "$(brightnessctl | grep -oP '(?<=\()[0-9]+(?=%)')%"
+interval=2
+label=☀
+color=#FFFF66
+
+[brightness_up]
+command=~/.config/i3blocks/scripts/brightness.sh up
+interval=once
+color=#FFFF66
+
+[language]
+command=~/.config/i3blocks/scripts/language.sh
+interval=1
+markup=pango
+
+[cpu]
+command=~/.config/i3blocks/scripts/cpu.sh
+interval=2
+color=#FFB86C   # orange - activity/energy
+
+[uptime]
+command=uptime -p | sed 's/up //' | sed 's/ hours\{0,1\}/h/' | sed 's/ minutes\{0,1\}/m/' | sed 's/, //'
+interval=30
+color=#6272A4
+
+[volume]
+command=~/.config/i3blocks/scripts/volume.sh
+interval=1
+
+
+[temp]
+command=~/.config/i3blocks/scripts/temp.sh
+interval=5
+color=#FF5555   # red - temperature indicator
+
+[bluetooth]
+command=~/.config/i3blocks/scripts/bluetooth.sh
+interval=5
+onclick=~/.config/i3blocks/scripts/bluetooth-toggle.sh
+color=#8BE9FD   # cyan - wireless connection
+
+[battery]
+command=~/.config/i3blocks/scripts/battery.sh
+interval=10
+color=#F1FA8C   # yellow - power level
+
+[disk]
+command=~/.config/i3blocks/scripts/disk.sh
+interval=30
+color=#BD93F9   # purple - storage
+
+[memory]
+command=free -h | awk '/Mem:/ {print  $3 "/" $2}'
+interval=5
+color=#FF79C6   # pink - memory usage
+
+[wifi]
+command=iwgetid -r | awk '{if ($1=="") print "W:down"; else print $1}'
+interval=5
+color=#8BE9FD   # cyan - network
+
+[time]
+command=date "+%d.%m.%Y|%H:%M:%S"
+interval=5
+color=#FFFFFF   # white - neutral time info
+
+
+
+

@@ -1,0 +1,301 @@
+@import "kanagawa.css";
+
+* {
+  font-family: "MartianMono Nerd Font";
+  font-size: 17px;
+}
+
+window#waybar {
+  background-color: rgba(62, 62, 62, 0.6);
+  border-radius: 0;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar > box {
+  padding: 5px 0;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+  border-radius: 20px;
+}
+
+button:hover {
+  background: inherit;
+  border: none;
+}
+
+/* Workspaces styles */
+
+#workspaces {
+  font-weight: 800;
+  margin-right: 5px;
+  background-color: @background;
+  color: @foreground;
+  border-radius: 20px;
+}
+
+#workspaces button {
+  border-radius: 20px;
+  padding: 0 8px;
+  color: inherit;
+  background-color: transparent;
+  transition: 0.5s ease-out;
+}
+
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active {
+  background-color: @foreground-dark;
+  color: @background;
+}
+
+#workspaces button.active:nth-child(1) {
+  border-radius: 20px 0 0 20px;
+}
+#workspaces button.active:nth-last-child(1) {
+  border-radius: 0 20px 20px 0;
+}
+
+#workspaces button.urgent {
+  border-bottom: 2px solid @orange;
+  border-radius: 20px;
+}
+
+#workspaces button.urgent:nth-child(1) {
+  border-bottom: 2px solid @orange;
+  border-radius: 20px 0 0 20px;
+}
+
+#workspaces button.urgent:nth-last-child(1) {
+  border-bottom: 2px solid @orange;
+  border-radius: 0 20px 20px 0;
+}
+
+/* Submap styles */
+#custom-submap {
+  background-color: @background;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+/* Hardware group styles */
+
+#hardware {
+  margin-right: 5px;
+}
+
+#cpu {
+  padding-right: 5px;
+}
+
+#memory {
+  padding-left: 5px;
+}
+
+#custom-disk {
+  padding-left: 5px;
+}
+
+#network {
+  margin-right: 1px;
+}
+
+#custom-mediaplayer {
+  padding: 0 10px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#custom-spotify {
+  color: #ffffff; /* Spotify green */
+}
+
+#custom-spotify.playing {
+  font-weight: 900;
+}
+
+#custom-spotify.paused {
+  opacity: 0.6;
+}
+
+#status {
+  background-color: @background;
+  color: @foreground;
+  border-radius: 20px;
+  /* margin-right: 2px; */
+  padding-right: 2px;
+}
+
+/* Audio module styles */
+
+#zvuk {
+  background-color: @background;
+  color: @foreground;
+  border-radius: 20px;
+  margin-right: 5px;
+  padding-right: 2px;
+}
+
+#pulseaudio:hover {
+  background-color: @overlay;
+}
+
+#pulseaudio {
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+#pulseaudio.output.muted {
+  color: @red;
+}
+#pulseaudio.input.source-muted {
+  color: @red;
+}
+#custom-bluetooth {
+  padding: 6px;
+}
+
+/* Privacy */
+
+#privacy {
+  background-color: @background;
+  color: @power;
+  border: 1.5px solid @power;
+  padding: 6px 10px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+/* Language */
+
+#custom-language {
+  margin-right: 5px;
+}
+
+
+/* Brightness module styles */
+
+#brightness {
+  background-color: @background;
+  color: @foreground;
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+#custom-brightness_down,
+#custom-brightness_up,
+#custom-brightness_level {
+  padding: 0 6px;
+  font-weight: 700;
+  color: #ffffff;
+  transition: 0.2s ease;
+}
+
+#custom-brightness_down:hover,
+#custom-brightness_up:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+#custom-brightness_level {
+  color: #ffffff;
+}
+
+/* Group container (for consistent alignment with other modules) */
+#group-brightness {
+  background-color: @background;
+  color: @foreground;
+  border-radius: 20px;
+  padding: 4px 6px;
+  margin-right: 5px;
+}
+
+
+
+/* Time group styles */
+
+#time {
+  border-radius: 20px;
+  font-weight: 700;
+  /* background-color: @background; */
+  /* https://grabient.com/HQBgrAzANKAsAcMT0cAjLAnDNYDsOsATDEUSKWicGWlBMHmtA3kS8AGyYRA?style=linearGradient&steps=13&angle=90 */
+
+  /* https://grabient.com/HQNgjATANMDsCs8YnmGFZuGALLdY+cAHEsMQjLAJxLzADMOa9Kdw1I1QA?style=linearGradient&steps=13&angle=45 */
+
+
+
+
+  background-color: #000000;
+  color: #ffffff;
+}
+
+#clock.simple {
+  padding: 6px 10px;
+  background-color: @foreground-dark;
+  color: @background;
+  border-radius: 0 20px 20px 0;
+  font-weight: 700;
+}
+
+#clock {
+  padding: 6px 10px;
+  border-radius: 20px 0 0 10px;
+}
+
+/* Tray */
+
+#tray {
+  margin-right: 5px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* Default module styles */
+
+#custom-battery,
+#temperature,
+#network,
+#hardware,
+#window,
+#tray,
+#language {
+  font-weight: 700;
+  background-color: @background;
+  color: @foreground;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.modules-right {
+  padding: 0 10px;
+}
+
+.modules-left {
+  padding: 0 10px;
+}
+
+label:focus {
+  background-color: #000;
+}
+
+#custom-battery span,
+#cpu span,
+#memory span,
+#network span,
+#temperature span {
+  margin-left: 2px; /* default is probably larger, e.g., 8px */
+}

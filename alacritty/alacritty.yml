@@ -1,0 +1,49 @@
+# ~/.config/alacritty/alacritty.yml
+
+# Font configuration
+font:
+  # You can change 'Fira Code' to any monospace font you have installed.
+  normal:
+    family: Droid Sans Mono
+    style: Regular
+
+  # Font size
+  size: 20.0
+
+
+
+
+# Tells Alacritty to use your fish shell
+shell:
+  program: /bin/fish
+
+window:
+  padding:
+    x: 10
+    y: 10
+  decorations: none
+  opacity: 1.0
+
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#C0C0C0'
+  normal:
+    black:   '#000000'
+    red:     '#FF5555'
+    green:   '#50FA7B'
+    yellow:  '#F1FA8C'
+    blue:    '#BD93F9'
+    magenta: '#FF79C6'
+    cyan:    '#8BE9FD'
+    white:   '#BBBBBB'
+  bright:
+    black:   '#000000'
+    red:     '#FF6E6E'
+    green:   '#69FF94'
+    yellow:  '#FFFFA5'
+    blue:    '#D6ACFF'
+    magenta: '#FF92DF'
+    cyan:    '#A4FFFF'
+    white:   '#FFFFFF'
+

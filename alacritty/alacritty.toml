@@ -1,0 +1,15 @@
+[font]
+size = 15.0
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[terminal.shell]
+program = "/bin/fish"
+
+[window.padding]
+x = 10
+y = 10
+
+[terminal]

@@ -1,0 +1,42 @@
+/* @define-color background #16161D; */
+@define-color background #000000;
+@define-color foreground #FFFFFF;
+@define-color foreground-dark #FFFFFF;
+@define-color power #DCA561;
+@define-color red #C34043;
+@define-color orange #FF9E3B;
+@define-color overlay #2A2A37;
+
+@define-color green #98C379;
+@define-color light-green #B5E8A0;
+@define-color dark-green #3E8E41;
+
+@define-color purple #C678DD;
+@define-color light-purple #D8B8F8;
+@define-color darkpurple #6B3E8E;
+
+@define-color blue #61AFEF;
+@define-color light-blue #93D4FA;
+@define-color dark-blue #2A6F9E;
+
+@define-color yellow #E5C07B;
+@define-color light-yellow #FFEFA1;
+@define-color dark-yellow #B3882F;
+
+@define-color pink #F28EAD;
+@define-color light-pink #FFC7D1;
+@define-color dark-pink #C14D63;
+
+@define-color cyan #56B6C2;
+@define-color light-cyan #9FD7DD;
+@define-color dark-cyan #2E6E74;
+
+@define-color orange-light #FFB070;
+@define-color orange-dark #D06F3B;
+
+@define-color gray-light #A0A0A0;
+@define-color gray-dark #404040;
+
+@define-color teal #4DB5BD;
+@define-color lime #B5D86A;
+@define-color magenta #D670B2;
