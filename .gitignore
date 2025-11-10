@@ -1,0 +1,17 @@
+# Ignore everything
+*
+
+# Keep these configs
+!alacritty/
+!fish/
+!hypr/
+!i3/
+!i3blocks/
+!kitty/
+!neofetch/
+!starship.toml
+!waybar/
+
+# Keep gitignore itself
+!.gitignore
+
