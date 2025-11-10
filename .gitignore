@@ -1,17 +1,19 @@
-# Ignore everything
-*
+# Ignore everything by default
+/*
 
-# Keep these configs
-!alacritty/
-!fish/
-!hypr/
-!i3/
-!i3blocks/
-!kitty/
-!neofetch/
-!starship.toml
-!waybar/
+# Keep these folders and their contents
+!/alacritty/**
+!/fish/**
+!/hypr/**
+!/i3/**
+!/i3blocks/**
+!/kitty/**
+!/neofetch/**
+!/waybar/**
+
+# Keep this single file
+!/starship.toml
 
 # Keep gitignore itself
-!.gitignore
+!/.gitignore
 
