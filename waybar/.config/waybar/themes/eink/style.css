@@ -243,6 +243,8 @@ button:hover {
 
 /* Notifications (swaync bell) */
 #custom-notification {
+  /* terminal font for the count text; Nerd Font kept so the bell glyph renders */
+  font-family: "Consolas", "MartianMono Nerd Font", "Noto Sans Mono", monospace;
   font-weight: 700;
   background-color: @background;
   color: @foreground;

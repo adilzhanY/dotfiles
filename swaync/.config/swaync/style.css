@@ -15,7 +15,9 @@
 @define-color border-col    rgba(122, 162, 247, 0.45);
 
 * {
-  font-family: "Martian Mono", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  /* same font as the terminal (kitty -> Consolas, falls back to Noto Sans Mono
+     until the real Consolas.ttf is installed); Nerd Font kept for any glyphs */
+  font-family: "Consolas", "MartianMono Nerd Font", "Noto Sans Mono", sans-serif;
   font-size: 14px;
 }
 
