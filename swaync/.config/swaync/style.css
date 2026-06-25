@@ -45,12 +45,13 @@
   padding: 0;
   border-radius: 16px;
   border: 2px solid @border-col;
-  background: linear-gradient(135deg, @bg 0%, @bg-alt 100%);
+  /* translucent so Hyprland's layer blur shows through (frosted glass) */
+  background: linear-gradient(135deg, rgba(26, 27, 38, 0.60) 0%, rgba(36, 40, 59, 0.62) 100%);
 }
 
 .notification-default-action:hover {
   border-color: @accent;
-  background: linear-gradient(135deg, @bg-alt 0%, @bg 100%);
+  background: linear-gradient(135deg, rgba(36, 40, 59, 0.72) 0%, rgba(26, 27, 38, 0.70) 100%);
 }
 
 .notification-content {
@@ -151,7 +152,8 @@
 
 /* ---- control center (notification panel, super+N) -------------------- */
 .control-center {
-  background: rgba(26, 27, 38, 0.96);
+  /* translucent panel — blurred by the swaync-control-center layerrule */
+  background: rgba(26, 27, 38, 0.55);
   border: 2px solid @border-col;
   border-radius: 20px;
   box-shadow: 0 10px 40px 4px rgba(0, 0, 0, 0.6);
