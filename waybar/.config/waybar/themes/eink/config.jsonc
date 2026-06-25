@@ -67,7 +67,7 @@
   /* Hardware group */
   "group/hardware": {
     "orientation": "horizontal",
-    "modules": ["cpu", "memory"]
+    "modules": ["cpu", "memory", "custom/disk"]
   },
 
   "cpu": {
@@ -78,6 +78,15 @@
   "memory": {
     "format": "<span color=\"#ffffff\"></span> {percentage}%",
     "tooltip-format": "{used} / {total} GB"
+  },
+
+  /* Disk usage: used/total GB for the Arch root partition. Hover for details. */
+  "custom/disk": {
+    "exec": "~/.config/waybar/scripts/disk.sh",
+    "return-type": "json",
+    "interval": 60,
+    "format": "<span color=\"#ffffff\"></span> {}",
+    "tooltip": true
   },
 
   /* Audio group */

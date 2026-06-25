@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Root filesystem usage for waybar in "<used>/<total>GB" form (e.g. 12/191GB).
+# `/` and `/home` share the same partition on this machine, so `/` covers it.
+# Emits JSON (text + tooltip) for a custom module with "return-type": "json".
 
-disk_info=$(df -h /home | awk 'NR==2 {print $2,$3,$4,$5}')
-total=$(echo $disk_info | awk '{print $1}')
-used=$(echo $disk_info | awk '{print $2}')
-free=$(echo $disk_info | awk '{print $3}')
-percent_used=$(echo $disk_info | awk '{print $4}')
-percent_free=$((100 - ${percent_used%\%}))
+read -r used total pct avail < <(
+  df -BG --output=used,size,pcent,avail / \
+    | awk 'NR==2 { gsub("G","",$1); gsub("G","",$2); gsub("G","",$4); print $1, $2, $3, $4 }'
+)
 
-# output formatted for Waybar
-echo -e "$free free\nUsed: $used / $total ($percent_used)\nRemaining: $free ($percent_free%)"
+text="${used}/${total}GB"
+tooltip="Used: ${used}GB / ${total}GB (${pct})\nFree: ${avail}GB"
 
+printf '{"text": "%s", "tooltip": "%s", "class": "disk"}\n' "$text" "$tooltip"
