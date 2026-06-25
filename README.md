@@ -29,7 +29,7 @@ git clone https://github.com/adilzhanY/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
 # 3. symlink everything into ~/.config (or pick packages individually)
-stow nvim i3 hypr waybar kitty fish starship
+stow nvim i3 hypr waybar kitty fish wofi starship
 ```
 
 If a real file/folder already exists at the target (e.g. a default `~/.config/hypr`),
