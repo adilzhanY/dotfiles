@@ -14,8 +14,8 @@
   "modules-center": [],
 
   "modules-right": [
-    "group/brightness",
     "privacy",
+    "group/brightness",
     "custom/language",
     "group/zvuk",
     "group/hardware",
