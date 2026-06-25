@@ -43,11 +43,11 @@
     "tooltip": false
   },
 
-  /* Language */
+  /* Language: event-driven (updates instantly on layout switch). The script
+     stays running and listens to Hyprland's socket2, so there is no poll lag. */
   "custom/language": {
-    "exec": "~/.config/waybar/scripts/language.sh",
-    "interval": 1,
-    "format": "<span color=\"#ffffff\"></span>{}",
+    "exec": "~/.config/waybar/scripts/language.py",
+    "format": "{}",
     "tooltip": false
   },
 
@@ -193,7 +193,7 @@
      emitted by swaync drives the pulse animation in style.css. */
   "custom/notification": {
     "tooltip-format": "{text} unread\nLeft-click: open • Right-click: DND",
-    "format": "{icon} {text}",
+    "format": "{icon}{text}",
     "format-icons": {
       "notification": "<span foreground='#c34043'>󰂚</span>",
       "none": "󰂜",
@@ -206,7 +206,7 @@
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb | sed -u 's/\"text\": \"0\"/\"text\": \"\"/'",
+    "exec": "swaync-client -swb | sed -u -e 's/\"text\": \"0\"/\"text\": \"\"/' -e 's/\"text\": \"\\([0-9]\\)/\"text\": \" \\1/'",
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
