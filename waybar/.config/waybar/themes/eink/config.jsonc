@@ -138,7 +138,7 @@
   /* Status group */
   "group/status": {
     "orientation": "horizontal",
-    "modules": ["network"]
+    "modules": ["network", "custom/devices"]
   },
 
   "network": {
@@ -146,6 +146,15 @@
     "format-ethernet": "<span color=\"#ffffff\"> </span>",
     "format-disconnected": "<span color=\"#ffffff\">⚠</span>",
     "tooltip-format": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
+    "tooltip": true
+  },
+
+  /* Connected devices + battery (headset, BT peripherals). Hover for details. */
+  "custom/devices": {
+    "exec": "~/.config/waybar/scripts/devices.py",
+    "return-type": "json",
+    "interval": 30,
+    "format": "<span color=\"#ffffff\">{}</span>",
     "tooltip": true
   },
 
