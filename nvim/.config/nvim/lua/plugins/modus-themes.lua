@@ -18,7 +18,7 @@ require('modus-themes').setup({
   },
   
   -- Transparency options
-  transparent = false,  -- Set to true if you want transparent background
+  transparent = true,  -- transparent background (matches kitty/Hyprland)
   
   -- Darker background for better contrast
   dim_inactive = false,

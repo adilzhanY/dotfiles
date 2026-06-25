@@ -94,6 +94,7 @@ require("config.theme")
 require("config.mappings")
 require("config.options")
 require("config.autocmd")
+require("config.transparent") -- transparent bg for every theme (matches kitty/Hyprland)
 
 ------------------------------------------------------------
 -- Plugin Configs
