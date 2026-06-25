@@ -57,7 +57,13 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 set -gx PATH ~/.npm-global/bin $PATH
 
-# node 
+# User-local binaries (claude, pipx tools, uv, etc.) — added directly so it
+# works even on machines without uv's env.fish to set it up.
+if test -d "$HOME/.local/bin"
+    fish_add_path "$HOME/.local/bin"
+end
+
+# node
 set -x nvm_default_version 22
 
 # auto-use default Node version
