@@ -29,3 +29,8 @@ require'nvim-treesitter.configs'.setup {
 		},
 	},
 }
+
+-- Patch the frozen master-branch query handlers so they stop throwing
+-- "attempt to call method 'range' (a nil value)" on Neovim 0.12. See the file
+-- for the full explanation.
+require("plugins.treesitter-compat")

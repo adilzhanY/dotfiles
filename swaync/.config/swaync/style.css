@@ -1,0 +1,206 @@
+/*
+ * swaync style — animated "toast" notifications for Hyprland
+ * Dark, rounded, accent border, app icon + title + body + app name,
+ * prominent close cross, slide-in via config "transition-time".
+ */
+
+/* ---- palette ---------------------------------------------------------- */
+@define-color bg            #1a1b26;
+@define-color bg-alt        #24283b;
+@define-color fg            #c0caf5;
+@define-color fg-muted      #7f8bb0;
+@define-color accent        #7aa2f7;
+@define-color accent-soft   rgba(122, 162, 247, 0.18);
+@define-color urgent        #f7768e;
+@define-color border-col    rgba(122, 162, 247, 0.45);
+
+* {
+  font-family: "Martian Mono", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 14px;
+}
+
+/* ---- single toast / notification ------------------------------------- */
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification {
+  margin: 8px 12px 0 12px;
+  padding: 0;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: 0 8px 24px 2px rgba(0, 0, 0, 0.55);
+  transition: all 220ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.notification:hover {
+  box-shadow: 0 12px 30px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* the clickable area = click-to-open-app (default action) */
+.notification-default-action {
+  margin: 0;
+  padding: 0;
+  border-radius: 16px;
+  border: 2px solid @border-col;
+  background: linear-gradient(135deg, @bg 0%, @bg-alt 100%);
+}
+
+.notification-default-action:hover {
+  border-color: @accent;
+  background: linear-gradient(135deg, @bg-alt 0%, @bg 100%);
+}
+
+.notification-content {
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+/* app icon / image */
+.notification-content .image,
+.notification-content .app-icon,
+.notification-icon {
+  -gtk-icon-transform: none;
+  margin-right: 14px;
+  border-radius: 12px;
+}
+
+/* app name (the small label above the title) */
+.notification-content .app-name,
+.summary {
+  color: @fg;
+}
+
+.summary {
+  font-size: 16px;
+  font-weight: 700;
+  color: @fg;
+  margin-bottom: 2px;
+}
+
+.notification-content .app-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: @accent;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;
+}
+
+.time {
+  font-size: 11px;
+  color: @fg-muted;
+  margin-right: 26px;
+}
+
+.body {
+  font-size: 13px;
+  color: @fg-muted;
+  margin-top: 4px;
+}
+
+.body-image {
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+/* urgent / critical */
+.notification.critical .notification-default-action {
+  border-color: @urgent;
+}
+.critical .summary {
+  color: @urgent;
+}
+
+/* ---- close cross ----------------------------------------------------- */
+.close-button {
+  background: @accent-soft;
+  color: @fg;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 50%;
+  margin: 8px 8px 0 0;
+  min-width: 26px;
+  min-height: 26px;
+  box-shadow: none;
+  border: none;
+  transition: all 160ms ease-in-out;
+}
+
+.close-button:hover {
+  background: @urgent;
+  color: #ffffff;
+}
+
+/* ---- action buttons (e.g. Reply / Open) ------------------------------ */
+.notification-action {
+  margin: 6px 4px 2px 4px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: @fg;
+  background: @bg-alt;
+  border: 1px solid @border-col;
+  transition: all 160ms ease-in-out;
+}
+
+.notification-action:hover {
+  background: @accent;
+  color: @bg;
+}
+
+/* ---- control center (notification panel, super+N) -------------------- */
+.control-center {
+  background: rgba(26, 27, 38, 0.96);
+  border: 2px solid @border-col;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px 4px rgba(0, 0, 0, 0.6);
+  margin: 0;
+  padding: 12px;
+}
+
+.control-center .notification-row .notification {
+  margin: 8px 4px 0 4px;
+}
+
+.widget-title {
+  color: @fg;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 6px 8px 12px 8px;
+}
+
+.widget-title > button {
+  color: @fg;
+  background: @bg-alt;
+  border: 1px solid @border-col;
+  border-radius: 10px;
+  padding: 4px 12px;
+  transition: all 160ms ease-in-out;
+}
+
+.widget-title > button:hover {
+  background: @accent;
+  color: @bg;
+}
+
+/* do-not-disturb toggle */
+.widget-dnd {
+  color: @fg;
+  font-size: 14px;
+  margin: 4px 8px 12px 8px;
+}
+
+.widget-dnd > switch {
+  border-radius: 14px;
+  background: @bg-alt;
+  border: 1px solid @border-col;
+}
+
+.widget-dnd > switch:checked {
+  background: @accent;
+}
+
+.blank-window {
+  background: transparent;
+}
