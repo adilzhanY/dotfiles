@@ -14,6 +14,7 @@ dotfiles/
 ├── hypr/.config/hypr/         -> ~/.config/hypr
 ├── waybar/.config/waybar/     -> ~/.config/waybar
 ├── kitty/.config/kitty/       -> ~/.config/kitty
+├── fish/.config/fish/         -> ~/.config/fish
 └── starship/.config/starship.toml -> ~/.config/starship.toml
 ```
 
@@ -28,7 +29,7 @@ git clone https://github.com/adilzhanY/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
 # 3. symlink everything into ~/.config (or pick packages individually)
-stow nvim i3 hypr waybar kitty starship
+stow nvim i3 hypr waybar kitty fish starship
 ```
 
 If a real file/folder already exists at the target (e.g. a default `~/.config/hypr`),
