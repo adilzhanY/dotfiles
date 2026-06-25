@@ -139,7 +139,7 @@
   /* Status group */
   "group/status": {
     "orientation": "horizontal",
-    "modules": ["network", "custom/battery"]
+    "modules": ["network"]
   },
 
   "network": {
@@ -150,12 +150,6 @@
     "tooltip": true
   },
 
-  "custom/battery": {
-    "exec": "~/.config/waybar/scripts/battery.sh",
-    "format": "{}",
-    "interval": 2,
-    "tooltip": true
-  },
 
   /* Tray */
   "tray": {
