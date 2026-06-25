@@ -20,7 +20,8 @@
     "group/hardware",
     "tray",
     "group/status",
-    "group/time"
+    "group/time",
+    "custom/notification"
   ],
 
   /* Window title */
@@ -185,5 +186,29 @@
     "format": "{}",
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh"
+  },
+
+  /* Notifications: bell + unread badge. Left-click opens the swaync sidebar
+     (all previous messages); right-click toggles Do Not Disturb. The .class
+     emitted by swaync drives the pulse animation in style.css. */
+  "custom/notification": {
+    "tooltip-format": "{text} unread\nLeft-click: open • Right-click: DND",
+    "format": "{icon} {text}",
+    "format-icons": {
+      "notification": "<span foreground='#c34043'>󰂚</span>",
+      "none": "󰂜",
+      "dnd-notification": "<span foreground='#c34043'>󰂛</span>",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "<span foreground='#c34043'>󰂚</span>",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "<span foreground='#c34043'>󰂛</span>",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb | sed -u 's/\"text\": \"0\"/\"text\": \"\"/'",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }
