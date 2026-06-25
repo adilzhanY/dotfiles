@@ -15,7 +15,6 @@
 
   "modules-right": [
     "privacy",
-    "group/brightness",
     "custom/language",
     "group/zvuk",
     "group/hardware",
@@ -163,36 +162,5 @@
     "format": "{}",
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh"
-  },
-
-  /* Brightness */
-  "custom/brightness_up": {
-    "format": "<span color=\"#ffffff\"></span>",
-    "on-click": "brightnessctl s 5%+",
-    "tooltip": false
-  },
-
-  "custom/brightness_down": {
-    "format": "<span color=\"#ffffff\"></span>",
-    "on-click": "brightnessctl s 5%-",
-    "tooltip": false
-  },
-
-  "custom/brightness_level": {
-    "exec": "brightnessctl | grep -oP '(?<=\\()[0-9]+(?=%)'",
-    "interval": 5,
-    "format": "<span color=\"#ffffff\">☀</span> {}%",
-    "tooltip": false
-  },
-
-  "group/brightness": {
-    "orientation": "horizontal",
-    "modules": [
-      "custom/brightness_down",
-      "custom/brightness_level",
-      "custom/brightness_up"
-    ]
   }
 }
-
-
