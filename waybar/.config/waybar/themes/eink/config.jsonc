@@ -67,7 +67,7 @@
   /* Hardware group */
   "group/hardware": {
     "orientation": "horizontal",
-    "modules": ["cpu", "memory", "custom/disk"]
+    "modules": ["cpu", "custom/memory", "custom/disk"]
   },
 
   "cpu": {
@@ -75,9 +75,14 @@
     "tooltip-format": "Cores: {cores}\nLoad: {load}\nTemp: {temperature}°C"
   },
 
-  "memory": {
-    "format": "<span color=\"#ffffff\"></span> {percentage}%",
-    "tooltip-format": "{used} / {total} GB"
+
+  /* Memory: combined RAM% / VRAM% (hover for GB breakdown of both). */
+  "custom/memory": {
+    "exec": "~/.config/waybar/scripts/mem.py",
+    "return-type": "json",
+    "interval": 3,
+    "format": "<span color=\"#ffffff\"></span> {}",
+    "tooltip": true
   },
 
   /* Disk usage: used/total GB for the Arch root partition. Hover for details. */
