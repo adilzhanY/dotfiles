@@ -53,9 +53,18 @@ sudo pacman -S hyprland hyprlock hyprpaper hyprshot xdg-desktop-portal-hyprland 
   thunar thunar-volman gvfs tumbler code pipewire pipewire-pulse wireplumber \
   playerctl python-gobject brightnessctl bluez bluez-utils networkmanager \
   network-manager-applet curl jq grim slurp starship nodejs npm \
-  ttf-jetbrains-mono-nerd ttf-font-awesome ttf-nerd-fonts-symbols
+  ttf-martian-mono-nerd ttf-jetbrains-mono-nerd ttf-font-awesome ttf-nerd-fonts-symbols \
+  noto-fonts noto-fonts-cjk noto-fonts-emoji
 yay -S wl-color-picker bibata-cursor-theme-bin
 ```
+
+Fonts:
+- `ttf-martian-mono-nerd` — the Nerd Font Waybar uses for its icons.
+- `noto-fonts-cjk` — Japanese/Chinese/Korean glyphs (e.g. Japanese text in the browser);
+  `noto-fonts-emoji` for colour emoji.
+- The Kitty terminal uses **Consolas**, which is proprietary and not in any repo.
+  Copy `Consolas-Regular.ttf` / `Consolas-Bold.ttf` into `~/.local/share/fonts/`
+  and run `fc-cache -f`. (Or switch Kitty to a Nerd Font to avoid the dependency.)
 
 i3 (X11) extras: `sudo pacman -S i3-wm i3blocks i3lock dmenu picom`
 
