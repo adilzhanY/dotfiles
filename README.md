@@ -52,7 +52,7 @@ sudo pacman -S hyprland hyprlock hyprpaper hyprshot xdg-desktop-portal-hyprland 
   hyprpolkitagent qt5-wayland qt6-wayland kitty wofi waybar mako firefox \
   thunar thunar-volman gvfs tumbler code pipewire pipewire-pulse wireplumber \
   playerctl python-gobject brightnessctl bluez bluez-utils networkmanager \
-  network-manager-applet curl jq grim slurp starship \
+  network-manager-applet curl jq grim slurp starship nodejs npm \
   ttf-jetbrains-mono-nerd ttf-font-awesome ttf-nerd-fonts-symbols
 yay -S wl-color-picker bibata-cursor-theme-bin
 ```
