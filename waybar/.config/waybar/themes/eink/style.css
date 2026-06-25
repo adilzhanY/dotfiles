@@ -255,7 +255,7 @@ button:hover {
 }
 
 /* Default modules */
-#custom-battery,
+#custom-devices,
 #temperature,
 #network,
 #hardware,
@@ -266,6 +266,12 @@ button:hover {
   color: @foreground;
   padding: 6px 10px;
   border-radius: 20px;
+}
+
+/* Connected-devices USB icon: a touch more right padding so the glyph
+   clears the rounded edge of the status pill and isn't clipped. */
+#custom-devices {
+  padding-right: 12px;
 }
 
 .modules-right {
@@ -280,7 +286,7 @@ label:focus {
   background-color: #000;
 }
 
-#custom-battery span,
+#custom-devices span,
 #cpu span,
 #memory span,
 #network span,
