@@ -1,0 +1,205 @@
+{
+  "position": "bottom",
+  "output": "eDP-1",
+  "margin-left": 0,
+  "margin-right": 0,
+  "height": 10,
+
+  /* Layout */
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window",
+    "custom/submap"
+  ],
+
+  "modules-center": [],
+
+  "modules-right": [
+    "group/brightness",
+    "privacy",
+    "custom/language",
+    "group/zvuk",
+    "group/hardware",
+    "tray",
+    "group/status",
+    "group/time"
+  ],
+
+  /* Window title */
+  "hyprland/window": {
+    "format": "{initialTitle}",
+    "max-length": 35,
+    "rewrite": {
+      "": "Hyprland",
+      "kitty": "Terminal"
+    },
+    "separate-outputs": false
+  },
+
+  /* Submap */
+  "custom/submap": {
+    "exec": "~/.config/waybar/scripts/submap.sh",
+    "interval": 1,
+    "format": "{}",
+    "tooltip": false
+  },
+
+  /* Language */
+  "custom/language": {
+    "exec": "~/.config/waybar/scripts/language.sh",
+    "interval": 1,
+    "format": "<span color=\"#ffffff\"></span>{}",
+    "tooltip": false
+  },
+
+  /* Workspaces */
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    }
+  },
+
+  /* Hardware group */
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": ["cpu", "memory"]
+  },
+
+  "cpu": {
+    "format": "<span color=\"#ffffff\"></span>CPU: {usage}%",
+    "tooltip-format": "Cores: {cores}\nLoad: {load}\nTemp: {temperature}°C"
+  },
+
+  "memory": {
+    "format": "<span color=\"#ffffff\"></span>Memory: {percentage}%",
+    "tooltip-format": "{used} / {total} GB"
+  },
+
+  /* Audio group */
+  "group/zvuk": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio#output",
+      "pulseaudio#input",
+      "custom/bluetooth"
+    ]
+  },
+
+  "pulseaudio#output": {
+    "format": "{icon}    {volume}%",
+    "format-muted": " 0%",
+    "format-icons": {
+      "default": ["", "", ""],
+      "headphone": [""]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+  "pulseaudio#input": {
+    "exec": "~/.config/waybar/scripts/mic_name.sh",
+    "format": "{format_source}",
+    "format-source": "<span color=\"#ffffff\"></span> {volume}%",
+    "format-source-muted": " ",
+    "tooltip": false,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+  },
+
+  /* Time group */
+  "group/time": {
+    "orientation": "horizontal",
+    "modules": ["clock", "clock#simple"]
+  },
+
+  "clock#simple": {
+    "format": "{:%H:%M:%S}",
+    "tooltip": false,
+    "interval": 1
+  },
+
+  "clock": {
+    "format": "{:L%a %d, %b %Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%d-%m-%Y}"
+  },
+
+  /* Privacy */
+  "privacy": {
+    "icon-size": 15,
+    "icon-spacing": 8
+  },
+
+  /* Status group */
+  "group/status": {
+    "orientation": "horizontal",
+    "modules": ["network", "custom/battery"]
+  },
+
+  "network": {
+    "format-wifi": "<span color=\"#ffffff\"> </span>",
+    "format-ethernet": "<span color=\"#ffffff\"> </span>",
+    "format-disconnected": "<span color=\"#ffffff\">⚠</span>",
+    "tooltip-format": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
+    "tooltip": true
+  },
+
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "format": "{}",
+    "interval": 2,
+    "tooltip": true
+  },
+
+  /* Tray */
+  "tray": {
+    "spacing": 10
+  },
+
+  /* Bluetooth */
+  "custom/bluetooth": {
+    "exec": "~/.config/waybar/scripts/bluetooth.sh",
+    "interval": 5,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh"
+  },
+
+  /* Brightness */
+  "custom/brightness_up": {
+    "format": "<span color=\"#ffffff\"></span>",
+    "on-click": "brightnessctl s 5%+",
+    "tooltip": false
+  },
+
+  "custom/brightness_down": {
+    "format": "<span color=\"#ffffff\"></span>",
+    "on-click": "brightnessctl s 5%-",
+    "tooltip": false
+  },
+
+  "custom/brightness_level": {
+    "exec": "brightnessctl | grep -oP '(?<=\\()[0-9]+(?=%)'",
+    "interval": 5,
+    "format": "<span color=\"#ffffff\">☀</span> {}%",
+    "tooltip": false
+  },
+
+  "group/brightness": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/brightness_down",
+      "custom/brightness_level",
+      "custom/brightness_up"
+    ]
+  }
+}
+
+

@@ -1,19 +1,7 @@
-# Ignore everything by default
-/*
+# editor / OS junk
+*.swp
+*~
+.DS_Store
 
-# Keep these folders (without recursion first)
-!/alacritty/
-!/fish/
-!/hypr/
-!/i3/
-!/i3blocks/
-!/kitty/
-!/neofetch/
-!/waybar/
-
-# Keep this single file
-!/starship.toml
-
-# Keep gitignore itself
-!/.gitignore
-
+# nvim runtime caches (lazy-lock.json IS kept on purpose for reproducible plugins)
+**/.netrwhist

@@ -1,0 +1,195 @@
+# i3 config file (v4)
+# Fixed chained commands using curly braces { } for version 4.25.1+
+
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Font
+font pango:monospace 8
+
+# Programs
+set $terminal kitty
+set $fileManager thunar
+set $browser firefox
+set $upscayl ./Applications/upscayl-2.15.0-linux_ce5f1614b52d23f65b49584741cb85a8.AppImage  
+set $minecraft flatpak run io.mrarm.mcpelauncher
+
+# --- KEYBOARD LAYOUT INITIALIZATION ---
+exec_always --no-startup-id setxkbmap -layout us
+
+# --- SYSTEM BINDINGS ---
+# 28=T (е), 56=B (и), 25=W (ц), 53=X (ч)
+bindcode $mod+28 exec $fileManager
+bindcode $mod+56 exec $browser
+bindcode $mod+25 exec ~/home/qantr/scripts/calibre-setup.fish
+bindcode $mod+53 exec "firefox http://localhost:5600/#/activity/adarch/view/"
+
+# 24=Q (й), 54=C (с), 40=D (в), 41=F (а)
+bindcode $mod+24 exec $terminal
+bindcode $mod+54 kill
+bindcode $mod+40 exec --no-startup-id "setxkbmap -layout us -option '' -option terminate:ctrl_alt_bksp; dmenu_run"
+bindcode $mod+41 fullscreen toggle
+
+# --- MODES ---
+
+# 1. Language selection mode (Trigger: Mod+L [46])
+# The chosen language is group 1 (active for typing); "us" is kept as group 2 so
+# that Ctrl/Alt shortcuts (copy, paste, cut, find, undo...) always resolve to the
+# Latin layer in every app, even while typing Russian/Kazakh.
+# Keys: 26=E English, 27=R Russian, 45=K Kazakh, 42=G German
+mode "lang" {
+    bindcode 26 exec "setxkbmap -layout us    -option '' -option terminate:ctrl_alt_bksp"; mode "default"
+    bindcode 27 exec "setxkbmap -layout ru,us -option '' -option terminate:ctrl_alt_bksp"; mode "default"
+    bindcode 45 exec "setxkbmap -layout kz,us -option '' -option terminate:ctrl_alt_bksp"; mode "default"
+    bindcode 42 exec "setxkbmap -layout de,us -option '' -option terminate:ctrl_alt_bksp"; mode "default"
+
+    bindcode 9 mode "default"
+    bindcode 36 mode "default"
+}
+bindcode $mod+46 mode "lang"
+bindsym $mod+g exec --no-startup-id ~/dev/grit/apps/web/deploy/grit-launch.sh
+
+# 2. Apps mode (Trigger: Mod+A [38])
+# Keys: 40=D discord, 54=C calibre, 32=O obsidian, 46=L libreoffice, 55=V code,
+#       28=T Telegram, 30=U upscayl, 25=W ticktick, 58=M minecraft
+mode "apps" {
+    bindcode 40 exec discord; mode "default"
+    bindcode 54 exec calibre; mode "default"
+    bindcode 32 exec obsidian; mode "default"
+    bindcode 46 exec libreoffice; mode "default"
+    bindcode 55 exec code; mode "default"
+    bindcode 28 exec Telegram; mode "default"
+    bindcode 30 exec $upscayl; mode "default"
+    bindcode 25 exec ticktick; mode "default"
+    bindcode 58 exec $minecraft; mode "default"
+
+    bindcode 9 mode "default"
+    bindcode 36 mode "default"
+}
+bindcode $mod+38 mode "apps"
+
+# 3. Bluetooth mode (Trigger: Mod+P [33])
+# Keys: 54=C connect, 40=D disconnect
+mode "bluetooth" {
+    bindcode 54 exec "bluetoothctl connect B4:84:D5:99:5F:AB"; mode "default"
+    bindcode 40 exec "bluetoothctl disconnect B4:84:D5:99:5F:AB"; mode "default"
+    bindcode 9 mode "default"
+    bindcode 36 mode "default"
+}
+bindcode $mod+33 mode "bluetooth"
+
+# --- WINDOW NAVIGATION ---
+# 44=J (о), 45=K (л), 47=; (ж)
+bindcode $mod+44 focus left
+bindcode $mod+45 focus down
+bindcode $mod+47 focus right
+
+# Arrows
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move windows
+bindcode $mod+Shift+44 move left
+bindcode $mod+Shift+45 move down
+bindcode $mod+Shift+46 move up
+bindcode $mod+Shift+47 move right
+
+# --- LAYOUTS ---
+# 43=H (р), 55=V (м), 31=S (ы), 26=E (у)
+bindcode $mod+43 split h
+bindcode $mod+55 split v
+bindcode $mod+31 layout stacking
+bindcode $mod+26 layout toggle split
+bindcode $mod+Shift+65 floating toggle
+
+# --- WORKSPACES ---
+bindcode $mod+10 workspace number 1
+bindcode $mod+11 workspace number 2
+bindcode $mod+12 workspace number 3
+bindcode $mod+13 workspace number 4
+bindcode $mod+14 workspace number 5
+bindcode $mod+15 workspace number 6
+bindcode $mod+16 workspace number 7
+bindcode $mod+17 workspace number 8
+bindcode $mod+18 workspace number 9
+bindcode $mod+19 workspace number 10
+
+bindcode $mod+Shift+10 move container to workspace number 1
+bindcode $mod+Shift+11 move container to workspace number 2
+bindcode $mod+Shift+12 move container to workspace number 3
+bindcode $mod+Shift+13 move container to workspace number 4
+bindcode $mod+Shift+14 move container to workspace number 5
+
+# --- SYSTEM CONTROLS ---
+bindcode $mod+Shift+54 reload
+bindcode $mod+Shift+27 restart
+bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'Exit?' -B 'Yes' 'i3-msg exit'"
+
+# --- HARDWARE & MISC ---
+# exec_always --no-startup-id xrandr --output eDP-1 --rotate normal
+exec_always --no-startup-id xrandr --output eDP-1 --rotate normal --output HDMI-1 --mode 2560x1440 --rate 144 --right-of eDP-1
+workspace 1 output eDP-1
+workspace 2 output HDMI-1
+workspace 3 output HDMI-1
+workspace 4 output HDMI-1
+workspace 5 output HDMI-1
+workspace 6 output HDMI-1
+workspace 7 output HDMI-1
+workspace 8 output HDMI-1
+workspace 9 output HDMI-1
+workspace 10 output HDMI-1
+exec --no-startup-id dunst
+bindsym F7 exec --no-startup-id sh -c 'echo 1 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness'
+exec_always --no-startup-id xinput set-prop "ASUE140A:00 04F3:3134 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec_always xrdb -merge ~/.Xresources
+exec --no-startup-id xset s off -dpms
+exec --no-startup-id redshift -O 4500K
+exec --no-startup-id dex --autostart --environment i3
+bindsym F11 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+exec --no-startup-id copyq --start-server
+
+# Audio
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
+# AULA 75 + HyperX Cloud III S volume rollers (both send XF86Audio* media keys).
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +8% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -8% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
+# --- RESIZE MODE ---
+mode "resize" {
+    bindcode 44 resize shrink width 10 px or 10 ppt
+    bindcode 45 resize grow height 10 px or 10 ppt
+    bindcode 46 resize shrink height 10 px or 10 ppt
+    bindcode 47 resize grow width 10 px or 10 ppt
+    
+    bindcode 9 mode "default"
+    bindcode 36 mode "default"
+}
+bindcode $mod+27 mode "resize"
+
+# --- BAR ---
+bar {
+    status_command i3blocks -c ~/.config/i3blocks/config
+    mode dock
+    position bottom
+    height 25
+    font pango:JetBrains Mono, Noto Color Emoji 8
+    separator_symbol "|"    
+    strip_workspace_numbers yes
+    colors {
+        background #000000
+        focused_workspace #808080 #0000FF #FFFFFF #0000FF #808080
+    }
+}
+
+new_window pixel 1
+client.focused #800080 #000000 #FFFFFF #FFFFFF #FFFFFF
+popup_during_fullscreen all
