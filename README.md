@@ -54,7 +54,7 @@ sudo pacman -S hyprland hyprlock hyprpaper hyprshot xdg-desktop-portal-hyprland 
   playerctl python-gobject brightnessctl bluez bluez-utils networkmanager \
   network-manager-applet curl jq grim slurp starship nodejs npm \
   ttf-martian-mono-nerd ttf-jetbrains-mono-nerd ttf-font-awesome ttf-nerd-fonts-symbols \
-  noto-fonts noto-fonts-cjk noto-fonts-emoji
+  noto-fonts noto-fonts-cjk noto-fonts-emoji papirus-icon-theme
 yay -S wl-color-picker bibata-cursor-theme-bin
 ```
 
