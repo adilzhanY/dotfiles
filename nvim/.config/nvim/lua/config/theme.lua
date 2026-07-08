@@ -15,7 +15,7 @@ end
 local themes = { --add more themes here, if installed
 	{ "solarized-osaka", "auto" },  -- Solarized Osaka (craftzdog)
 	{ "uylag", "uylag" },  -- New custom purple theme
-	{ "catppuccin", "catppuccin" },
+	{ "catppuccin", "catppuccin-nvim" },
 	{ "gruvbox", "gruvbox" },
 	{ "pywal16", "pywal16-nvim" },
 	{ "kanagawa-wave", "kanagawa" }, -- Default variant
