@@ -70,6 +70,7 @@ Plug('rmagatti/auto-session') -- Session management
 Plug('lewis6991/gitsigns.nvim') -- Git indicators
 Plug('emmanueltouzery/decisive.nvim') -- CSV viewer
 Plug('ron-rs/ron.vim') -- RON syntax highlighting
+Plug('SyedM-dev/PicVim') -- Image viewer (kitty graphics: zoom/pan/rotate)
 
 ------------------------------------------------------------
 -- LSP & Completion
@@ -120,6 +121,8 @@ require("plugins.indent-blankline")
 require("plugins.lsp")
 require("plugins.auto-session")
 require("plugins.conform")
+require("plugins.picvim")
+require("config.pdfview")
 
 ------------------------------------------------------------
 -- Deferred Loading (non-essential plugins)
