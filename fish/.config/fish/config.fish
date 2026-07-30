@@ -1,72 +1,42 @@
+# Commands to run in interactive sessions can go here
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-    alias gcm='git commit -m'
-    alias gl='git log'
-    alias gc='git checkout'
-    alias crgi='echo -e "target\nnode_modules\n.env\n.next\n.idea\n.vscode\ncache\ndist\nbuild\ncoverage\n__pycache__\n*.pyc\nvenv\n.DS_Store\ndb.sqlite3\n.mypy_cache\npytest_cache\n.svelte-kit\n.expo\n.packager\n*.log\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n" > .gitignore'
-		alias sdc='sudo systemctl poweroff'
-		alias ffn='firefox -p normal & disown'
-		alias ffw='firefox -p Warrior & disown'
-		alias rldwaybar='killall waybar && waybar & disown'
-		alias brs='mkdir backend && cargo init'
-		alias nmtc='~/clean_dev_folders.sh'
-		alias tg='/usr/bin/Telegram & disown'
-		alias ga='git add .'
-		alias gp='git push'
-		alias rnenw4='git clone --depth 1 https://github.com/adilzhanY/react-native-expo-nativewind_v4-template.git ./ && rm -rf .git'
-    alias hypreload='killall waybar && waybar & disown && pkill hyprpaper && hyprpaper -c ~/.config/hypr/hyprpaper.conf & disown && hyprctl reload'
-    alias blc='bluetoothctl connect B4:84:D5:99:5F:AB'
-    alias bld='bluetoothctl disconnect B4:84:D5:99:5F:AB'
-
-    # Whale Abyss
-    alias ssh_connect_wa='ssh -N -L 5432:127.0.0.1:5432 qantr@93.77.180.216'
-    alias ssh_connect_wa_vm='ssh qantr@93.77.180.216'
-
-  
-		starship init fish | source
+    # No greeting
     set fish_greeting
-		function zip
-	    if test (count $argv) -lt 1
-  	      echo "Usage: zip <task-number> [optional-name]"
-    	    return 1
-    	end
 
-    	set tasknum $argv[1]
-    	set optname ""
-    	if test (count $argv) -ge 2
-       	 set optname -$argv[2]
-    	end
+    # Use starship
+    function starship_transient_prompt_func
+        starship module character
+    end
+    if test "$TERM" != "linux"
+        starship init fish | source
+        enable_transience
+    end
+    
+    # Smarter cd: `z torq` jumps to ~/dev/torq once visited
+    zoxide init fish | source
 
-    	set filename ../task$tasknum$optname-(date "+%Y%m%d").tar.gz
+    # Shell history: Ctrl+R searches, Up arrow left alone (fish's own history is nicer there)
+    atuin init fish --disable-up-arrow | source
 
-    	tar -czf $filename \
-       	 --show-omitted-dirs \
-       	 --preserve-permissions \
-       	 --exclude target \
-       	 --exclude node_modules \
-       	 --exclude .next \
-       	 --exclude .idea \
-       	 .
-		end
+    # Colors
+    if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+        cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+    end
 
-
-end
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-set -gx PATH ~/.npm-global/bin $PATH
-
-# User-local binaries (claude, pipx tools, uv, etc.) — added directly so it
-# works even on machines without uv's env.fish to set it up.
-if test -d "$HOME/.local/bin"
-    fish_add_path "$HOME/.local/bin"
-end
-
-# node
-set -x nvm_default_version 22
-
-# auto-use default Node version
-if status is-interactive
-    nvm use $nvm_default_version >/dev/null 2>&1
+    # Aliases
+    # kitty doesn't clear properly so we need to do this weird printing
+    alias clear "printf '\033[2J\033[3J\033[1;1H'"
+    alias celar "printf '\033[2J\033[3J\033[1;1H'"
+    alias claer "printf '\033[2J\033[3J\033[1;1H'"
+    alias pamcan pacman
+    alias q 'qs -c ii'
+    alias ssh_connect_wa_vm 'ssh qantr@93.77.188.163'
+    alias ssh_connect_wa 'ssh -N -L 5432:127.0.0.1:5432 qantr@93.77.188.163'
+    alias c 'claude'
+    if test "$TERM" != "linux"
+        alias ls 'eza --icons'
+    end
+    if test "$TERM" = "xterm-kitty"
+        alias ssh 'kitten ssh'
+    end
 end

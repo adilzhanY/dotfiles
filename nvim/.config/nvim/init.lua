@@ -137,6 +137,9 @@ end, 100)
 ------------------------------------------------------------
 -- Theme Loader
 ------------------------------------------------------------
+-- sync 'background' with the end-4 palette BEFORE the colorscheme loads,
+-- so adaptive schemes (catppuccin auto, gruvbox) pick the right variant
+require("config.daynight").setup()
 load_theme()
 
 ------------------------------------------------------------

@@ -78,10 +78,12 @@ button:hover {
 }
 
 /* Submap */
-#custom-submap {
+#submap {
   background-color: @background;
   font-weight: bold;
   border-radius: 20px;
+  padding: 0 12px;
+  margin-left: 5px;
 }
 
 /* Hardware group */

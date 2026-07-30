@@ -1,7 +1,11 @@
 -- catppuccin + gruvbox colorscheme configuration
 
 require("catppuccin").setup({
-	flavour = "frappe",
+	flavour = "auto", -- follows 'background', kept in sync with the end-4 palette by config/daynight.lua
+	background = {
+		light = "latte",
+		dark = "frappe",
+	},
 	transparent_background = true,
         styles = {
            sidebars = "transparent",
